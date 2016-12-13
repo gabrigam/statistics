@@ -324,8 +324,10 @@ public class Statistics {
 
 										// 13.08.2016
 
+									    //13.12.16 inseriti i campi di ritorno: gpx63_RUNTIME - gpx63_DESIGNTIME - gpx63_USERDEFTIME
+										
 										jsaedett = wsrrutility.getObjectPropertiesData(bsrURISLA,
-												"&p1=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_APPL&p2=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_SYST&p3=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_PROD",
+												"&p1=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_APPL&p2=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_SYST&p3=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_PROD&p4=gpx63_RUNTIME&p5=gpx63_DESIGNTIME&p6=gpx63_USERDEFTIME",
 												url, user, password);
 
 										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
@@ -397,11 +399,24 @@ public class Statistics {
 										
 										if (jsaedett != null && jsaedett.length() !=0) {
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-													(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO"));
+													(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@"); //13.12.16 aggiunto @
 										} else {
 											recordSB.append("@");
 											
 										}
+										
+										//13.12.16  in coda aggiungo gpx63_RUNTIME gpx63_DESIGNTIME  gpx63_USERDEFTIME
+										
+										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
+												(JSONArray) jsaedett.get(0), "gpx63_RUNTIME"))
+												.append("@");
+										
+										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
+												(JSONArray) jsaedett.get(0), "gpx63_DESIGNTIME"))
+												.append("@");
+										
+										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
+												(JSONArray) jsaedett.get(0), "gpx63_gpx63_USERDEFTIME"));
 
 										legami_servizi_consumer_provider.println(recordSB.toString());
 
@@ -421,8 +436,10 @@ public class Statistics {
 											
 											// 13.08.2016
 
+											//13.12.16 inseriti i campi di ritorno: gpx63_RUNTIME - gpx63_DESIGNTIME - gpx63_USERDEFTIME
+											
 											jsaedett = wsrrutility.getObjectPropertiesData(bsrURISLA,
-													"&p1=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_APPL&p2=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_SYST&p3=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_PROD",
+													"&p1=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_APPL&p2=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_SYST&p3=gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_PROD&p4=gpx63_RUNTIME&p5=gpx63_DESIGNTIME&p6=gpx63_USERDEFTIME",
 													url, user, password);
 
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
@@ -492,11 +509,24 @@ public class Statistics {
 											
 											if (jsaedett != null && jsaedett.length() !=0) {
 												recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-														(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO"));
+														(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@"); //13.12.16 aggiunto @
 											} else {
 												recordSB.append("@");
 												
 											}
+											
+											//13.12.16  in coda aggiungo gpx63_RUNTIME gpx63_DESIGNTIME  gpx63_USERDEFTIME
+											
+											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
+													(JSONArray) jsaedett.get(0), "gpx63_RUNTIME"))
+													.append("@");
+											
+											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
+													(JSONArray) jsaedett.get(0), "gpx63_DESIGNTIME"))
+													.append("@");
+											
+											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
+													(JSONArray) jsaedett.get(0), "gpx63_gpx63_USERDEFTIME"));
 
 											applicazioni_consumer_provider.println(recordSB.toString());
 

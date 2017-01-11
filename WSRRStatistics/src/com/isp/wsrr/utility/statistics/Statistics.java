@@ -71,10 +71,10 @@ public class Statistics {
 
 		}
 
-		System.out.println("----------------------Totalizzatore V3.0- August 2016-----------------------------");
-		System.out.println("Inserita la stampa della data ultimo utilizzo  (sm63_DATA_ULTIMO_UTILIZZO) associata all'ambiente (Application/SystemTest/Produzione) per i legami servizi ed applicazioni");
-		System.out.println("Inserita la stampa della data ultimo utilizzo  (sm63_DATA_ULTIMO_UTILIZZO) associata all'ambiente (Application/SystemTest/Produzione) per l'elenco servizi viene concatenato priama di ogni data il tipo di endpoint");
-		System.out.println("Inserita la stampa delle informazioni aggiuntive legate all'organizzazione nel report elenco servizi");
+		System.out.println("----------------------Totalizzatore V3.1- Gennaio 2017-----------------------------");
+		//System.out.println("Inserita la stampa della data ultimo utilizzo  (sm63_DATA_ULTIMO_UTILIZZO) associata all'ambiente (Application/SystemTest/Produzione) per i legami servizi ed applicazioni");
+		//System.out.println("Inserita la stampa della data ultimo utilizzo  (sm63_DATA_ULTIMO_UTILIZZO) associata all'ambiente (Application/SystemTest/Produzione) per l'elenco servizi viene concatenato priama di ogni data il tipo di endpoint");
+		//System.out.println("Inserita la stampa delle informazioni aggiuntive legate all'organizzazione nel report elenco servizi");
 		System.out.println("----------------------------------------------------------------------------------");
 		JSONArray jsaBusinessApplication = wsrrutility.getAllObjectsSpecifiedByPrimaryType(
 				"http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23BusinessApplication",

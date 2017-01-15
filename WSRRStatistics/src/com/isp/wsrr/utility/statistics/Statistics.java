@@ -308,23 +308,23 @@ public class Statistics {
 
 										recordSB.append(WSRRUtility
 												.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "name"))
-												.append("@");
+												.append("@#@");
 
 										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-												(JSONArray) jsaedett.get(0), "description")).append("@");
+												(JSONArray) jsaedett.get(0), "description")).append("@#@");
 
 										comodo = WSRRUtility.getObjectValueFromJSONArrayData(
 												(JSONArray) jsaedett.get(0), "primaryType");
 
 										comodo = comodo.substring(comodo.indexOf("#") + 1, comodo.length());
 
-										recordSB.append(comodo).append("@");
+										recordSB.append(comodo).append("@#@");
 
-										recordSB.append(typeCons).append("@");
+										recordSB.append(typeCons).append("@#@");
 
-										recordSB.append(acronimoCons).append("@");
+										recordSB.append(acronimoCons).append("@#@");
 
-										recordSB.append(ssaCons).append("@");
+										recordSB.append(ssaCons).append("@#@");
 
 										// 13.08.2016
 
@@ -343,15 +343,15 @@ public class Statistics {
 
 										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
 												(JSONArray) jsaedett.get(0), "gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_APPL"))
-												.append("@");
+												.append("@#@");
 
 										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
 												(JSONArray) jsaedett.get(0), "gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_SYST"))
-												.append("@");
+												.append("@#@");
 
 										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
 												(JSONArray) jsaedett.get(0), "gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_PROD"))
-												.append("@");
+												.append("@#@");
 
 										// provider
 
@@ -360,29 +360,29 @@ public class Statistics {
 
 										recordSB.append(WSRRUtility
 												.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "name"))
-												.append("@");
+												.append("@#@");
 
 										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-												(JSONArray) jsaedett.get(0), "description")).append("@");
+												(JSONArray) jsaedett.get(0), "description")).append("@#@");
 
 										comodo = WSRRUtility.getObjectValueFromJSONArrayData(
 												(JSONArray) jsaedett.get(0), "primaryType");
 
 										comodo = comodo.substring(comodo.indexOf("#") + 1, comodo.length());
 
-										recordSB.append(comodo).append("@");
+										recordSB.append(comodo).append("@#@");
 										
-										recordSB.append(type).append("@");
+										recordSB.append(type).append("@#@");
 
 										jsaedett = wsrrutility.getObjectPropertiesData(sld, "&p1=description", url,
 												user, password);
 
 										recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-												(JSONArray) jsaedett.get(0), "description")).append("@");
+												(JSONArray) jsaedett.get(0), "description")).append("@#@");
 
-										recordSB.append(acronimo).append("@");
+										recordSB.append(acronimo).append("@#@");
 
-										recordSB.append(ssa).append("@");
+										recordSB.append(ssa).append("@#@");
 
 										// 13.08.2016 ultimo_utilizzo aggiunto il 24.08.2016 i singoli ambienti
 
@@ -390,9 +390,9 @@ public class Statistics {
 										
 										if (jsaedett != null && jsaedett.length() !=0) {
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-													(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@");
+													(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@#@");
 										} else {
-											recordSB.append("@");
+											recordSB.append("@#@");
 											
 										}
 
@@ -400,9 +400,9 @@ public class Statistics {
 										
 										if (jsaedett != null && jsaedett.length() !=0) {
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-													(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@");
+													(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@#@");
 										} else {
-											recordSB.append("@");
+											recordSB.append("@#@");
 											
 										}
 
@@ -410,19 +410,19 @@ public class Statistics {
 										
 										if (jsaedett != null && jsaedett.length() !=0) {
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-													(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@"); //13.12.16 aggiunto @
+													(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@#@"); //13.12.16 aggiunto @
 										} else {
-											recordSB.append("@");
+											recordSB.append("@#@");
 											
 										}
 										
 										//13.12.16  in coda aggiungo gpx63_RUNTIME gpx63_DESIGNTIME  gpx63_USERDEFTIME
 										
 										recordSB.append(runtime)
-												.append("@");
+												.append("@#@");
 										
 										recordSB.append(designtime)
-												.append("@");
+												.append("@#@");
 										
 										recordSB.append(userdeftime);
 
@@ -438,9 +438,9 @@ public class Statistics {
 
 											recordSB.delete(0, recordSB.length());
 
-											recordSB.append(acronimoCons).append("@");
+											recordSB.append(acronimoCons).append("@#@");
 
-											recordSB.append(ssaCons).append("@");
+											recordSB.append(ssaCons).append("@#@");
 											
 											// 13.08.2016
 
@@ -459,44 +459,44 @@ public class Statistics {
 
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
 													(JSONArray) jsaedett.get(0),
-													"gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_APPL")).append("@");
+													"gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_APPL")).append("@#@");
 
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
 													(JSONArray) jsaedett.get(0),
-													"gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_SYST")).append("@");
+													"gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_SYST")).append("@#@");
 
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
 													(JSONArray) jsaedett.get(0),
-													"gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_PROD")).append("@");
+													"gpx63_DATA_ULTIMO_UTILIZZO_LEGAME_PROD")).append("@#@");
 
 
 											jsaedett = wsrrutility.getObjectPropertiesData(provider,
 													"&p1=name&p2=primaryType&p3=description", url, user, password);
 
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-													(JSONArray) jsaedett.get(0), "name")).append("@");
+													(JSONArray) jsaedett.get(0), "name")).append("@#@");
 
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-													(JSONArray) jsaedett.get(0), "description")).append("@");
+													(JSONArray) jsaedett.get(0), "description")).append("@#@");
 
 											comodo = WSRRUtility.getObjectValueFromJSONArrayData(
 													(JSONArray) jsaedett.get(0), "primaryType");
 
 											comodo = comodo.substring(comodo.indexOf("#") + 1, comodo.length());
 
-											recordSB.append(comodo).append("@");
+											recordSB.append(comodo).append("@#@");
 											
-											recordSB.append(type).append("@");
+											recordSB.append(type).append("@#@");
 				
 											jsaedett = wsrrutility.getObjectPropertiesData(sld, "&p1=description", url,
 													user, password);
 
 											recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-													(JSONArray) jsaedett.get(0), "description")).append("@");
+													(JSONArray) jsaedett.get(0), "description")).append("@#@");
 
-											recordSB.append(acronimo).append("@");
+											recordSB.append(acronimo).append("@#@");
 
-											recordSB.append(ssa).append("@");
+											recordSB.append(ssa).append("@#@");
 
 											// 13.08.2016 ultimo_utilizzo aggiunto il 24.08.2016 i singoli ambienti
 
@@ -504,9 +504,9 @@ public class Statistics {
 											
 											if (jsaedett != null && jsaedett.length() !=0) {
 												recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-														(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@");
+														(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@#@");
 											} else {
-												recordSB.append("@");
+												recordSB.append("@#@");
 												
 											}
 
@@ -514,9 +514,9 @@ public class Statistics {
 											
 											if (jsaedett != null && jsaedett.length() !=0) {
 												recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-														(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@");
+														(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@#@");
 											} else {
-												recordSB.append("@");
+												recordSB.append("@#@");
 												
 											}
 
@@ -524,19 +524,19 @@ public class Statistics {
 											
 											if (jsaedett != null && jsaedett.length() !=0) {
 												recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData(
-														(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@"); //13.12.16 aggiunto @
+														(JSONArray) jsaedett.get(0), "sm63_DATA_ULTIMO_UTILIZZO")).append("@#@"); //13.12.16 aggiunto @
 											} else {
-												recordSB.append("@");
+												recordSB.append("@#@");
 												
 											}
 											
 											//13.12.16  in coda aggiungo gpx63_RUNTIME gpx63_DESIGNTIME  gpx63_USERDEFTIME
 											
 											recordSB.append(runtime)
-											.append("@");
+											.append("@#@");
 									
 											recordSB.append(designtime)
-											.append("@");
+											.append("@#@");
 									
 											recordSB.append(userdeftime);
 
@@ -813,8 +813,8 @@ public class Statistics {
 		
 	    StringBuffer composed=new StringBuffer();
 	    
-	    composed.append(composedApplication).append("@");
-	    composed.append(composedSystemTest).append("@");
+	    composed.append(composedApplication).append("@#@");
+	    composed.append(composedSystemTest).append("@#@");
 	    composed.append(composedProduzione);
 		
 		return composed.toString();
@@ -867,20 +867,20 @@ public class Statistics {
 
 			name = WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "name");
 
-			recordSB.append(name).append("@");
+			recordSB.append(name).append("@#@");
 
 			String comodo = WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "primaryType");
 
 			comodo = comodo.substring(comodo.indexOf("#") + 1, comodo.length());
 
-			recordSB.append(comodo).append("@");
+			recordSB.append(comodo).append("@#@");
 
-			recordSB.append(sottotBV).append("@");
+			recordSB.append(sottotBV).append("@#@");
 
 			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "description"))
-					.append("@");
+					.append("@#@");
 
-			recordSB.append(acroBV).append("@");
+			recordSB.append(acroBV).append("@#@");
 
 			if (acroBV != null)
 				jsaedett = wsrrutility.getPropertiesByObjectNameAndPrimaryType(acroBV,
@@ -888,7 +888,7 @@ public class Statistics {
 						url, user, password);
 
 			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "description"))
-					.append("@");
+					.append("@#@");
 	
 			//30.08.2016 nuova richiesta vengono recuperate informazioni estese da acronimo
 			JSONArray orgDett=null;
@@ -897,19 +897,19 @@ public class Statistics {
 			
 			orgDett=wsrrutility.getPropertiesByObjectNameAndPrimaryType(acroBV, "http://www.ibm.com/xmlns/prod/serviceregistry/v6r3/ALEModel%23Organization", "&p1=ale63_RESP_UFFICIO_MATRICOLA&p2=ale63_CODICE_SISTEMA_APPLICATIVO&p3=ale63_RESP_FUNZIONALE_NOMINATIVO&p4=ale63_RESP_SERVIZIO_NOMINATIVO&p5=ale63_RESP_ATTIVITA_NOMINATIVO&p6=ale63_RESP_ATTIVITA_MATRICOLA&p7=ale63_RESP_TECNICO_NOMINATIVO&p8=ale63_RESP_FUNZIONALE_MATRICOLA&p9=ale63_RESP_SERVIZIO_MATRICOLA&p10=ale63_RESP_UFFICIO_NOMINATIVO&p11=ale63_RESP_TECNICO_MATRICOLA", url, user, password);
 			
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_FUNZIONALE_MATRICOLA")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_FUNZIONALE_NOMINATIVO")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_TECNICO_MATRICOLA")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_TECNICO_NOMINATIVO")).append("@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_FUNZIONALE_MATRICOLA")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_FUNZIONALE_NOMINATIVO")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_TECNICO_MATRICOLA")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_TECNICO_NOMINATIVO")).append("@#@");
 	 
 			} else {
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
 
 			}
-			recordSB.append(ssaBV).append("@");
+			recordSB.append(ssaBV).append("@#@");
 
 			if (ssaBV != null)
 				jsaedett = wsrrutility.getPropertiesByObjectNameAndPrimaryType(ssaBV,
@@ -917,7 +917,7 @@ public class Statistics {
 						url, user, password);
 
 			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "description"))
-					.append("@");
+					.append("@#@");
 			
 			//30.08.2016 nuova richiesta vengono recuperate informazioni estese da SSA
 			
@@ -926,21 +926,21 @@ public class Statistics {
 			orgDett	=null;
 			orgDett=wsrrutility.getPropertiesByObjectNameAndPrimaryType(ssaBV, "http://www.ibm.com/xmlns/prod/serviceregistry/v6r3/ALEModel%23Organization", "&p1=ale63_RESP_UFFICIO_MATRICOLA&p2=ale63_CODICE_SISTEMA_APPLICATIVO&p3=ale63_RESP_FUNZIONALE_NOMINATIVO&p4=ale63_RESP_SERVIZIO_NOMINATIVO&p5=ale63_RESP_ATTIVITA_NOMINATIVO&p6=ale63_RESP_ATTIVITA_MATRICOLA&p7=ale63_RESP_TECNICO_NOMINATIVO&p8=ale63_RESP_FUNZIONALE_MATRICOLA&p9=ale63_RESP_SERVIZIO_MATRICOLA&p10=ale63_RESP_UFFICIO_NOMINATIVO&p11=ale63_RESP_TECNICO_MATRICOLA", url, user, password);
 		
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_FUNZIONALE_MATRICOLA")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_FUNZIONALE_NOMINATIVO")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_TECNICO_MATRICOLA")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_TECNICO_NOMINATIVO")).append("@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_FUNZIONALE_MATRICOLA")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_FUNZIONALE_NOMINATIVO")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_TECNICO_MATRICOLA")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_TECNICO_NOMINATIVO")).append("@#@");
 			
 			} else {
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
 			}
 
-			recordSB.append(attappl).append("@");
-			recordSB.append(attsys).append("@");
-			recordSB.append(attprd).append("@");
+			recordSB.append(attappl).append("@#@");
+			recordSB.append(attsys).append("@#@");
+			recordSB.append(attprd).append("@#@");
 
 			jsaedett = wsrrutility.getAssociatedInterfaces(name, "00", url, user, password);
 
@@ -962,7 +962,7 @@ public class Statistics {
 
 				interf = sb.toString();
 				interf = interf.substring(0, interf.length() - 1);
-				recordSB.append(interf).append("@");
+				recordSB.append(interf).append("@#@");
 				
 			} else
 				System.out.println("Interfaccia - "+name +" non presente con versione 00");
@@ -972,25 +972,25 @@ public class Statistics {
 			
 			//es (CICS)10-10-2018|(REST)20-12_2016|
 			
-			recordSB.append(Statistics.lastUsedDate(wsrrutility, bsrURI, url, user, password)).append("@");
+			recordSB.append(Statistics.lastUsedDate(wsrrutility, bsrURI, url, user, password)).append("@#@");
 			
 			//30.08.2016 in chiusura del record vengono recuperate altre informazioni indipendentemente se da acronimo o SSA in questo caso sono 
 			//le info associate al SSA
 			
 			if (ssaBV !=null) {
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_ATTIVITA_MATRICOLA")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_ATTIVITA_NOMINATIVO")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_UFFICIO_MATRICOLA")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_UFFICIO_NOMINATIVO")).append("@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_SERVIZIO_MATRICOLA")).append("@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_ATTIVITA_MATRICOLA")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_ATTIVITA_NOMINATIVO")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_UFFICIO_MATRICOLA")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_UFFICIO_NOMINATIVO")).append("@#@");
+			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_SERVIZIO_MATRICOLA")).append("@#@");
 			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_SERVIZIO_NOMINATIVO"));
 			}
 			else {
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
-				recordSB.append(" ").append("@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
+				recordSB.append(" ").append("@#@");
 				recordSB.append(" ");
 			}
 			

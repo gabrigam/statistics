@@ -71,10 +71,8 @@ public class Statistics {
 
 		}
 
-		System.out.println("----------------------Totalizzatore V3.1- Gennaio 2017-----------------------------");
-		//System.out.println("Inserita la stampa della data ultimo utilizzo  (sm63_DATA_ULTIMO_UTILIZZO) associata all'ambiente (Application/SystemTest/Produzione) per i legami servizi ed applicazioni");
-		//System.out.println("Inserita la stampa della data ultimo utilizzo  (sm63_DATA_ULTIMO_UTILIZZO) associata all'ambiente (Application/SystemTest/Produzione) per l'elenco servizi viene concatenato priama di ogni data il tipo di endpoint");
-		//System.out.println("Inserita la stampa delle informazioni aggiuntive legate all'organizzazione nel report elenco servizi");
+		System.out.println("----------------------Totalizzatore V3.2- Gennaio 2017-----------------------------");
+		System.out.println("Utilizzata la nuova funzione per il recupero della sottotipologia: getServiceVersionTipologyBybsrURI");
 		System.out.println("----------------------------------------------------------------------------------");
 		JSONArray jsaBusinessApplication = wsrrutility.getAllObjectsSpecifiedByPrimaryType(
 				"http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23BusinessApplication",
@@ -190,7 +188,9 @@ public class Statistics {
 
 							log("Provider - " + provider, verbose);
 
-							type = wsrrutility.getServiceVersionClassification(provider, url, user, password);
+							//210117 inserito nuovo metodo
+							//type = wsrrutility.getServiceVersionClassification(provider, url, user, password);
+							type = wsrrutility.getServiceVersionSubTipologyBybsrURI(provider, url, user ,password);
 
 							log("Type - " + type, verbose);
 
@@ -294,9 +294,9 @@ public class Statistics {
 											|| primaryType.contains("SCOPEN"))) {
 
 										recordSB.delete(0, recordSB.length());
-
-										typeCons = wsrrutility.getServiceVersionClassification(res, url, user,
-												password);
+										//210117 inserito nuovo metodo
+										//typeCons = wsrrutility.getServiceVersionClassification(res, url, user,password);
+										typeCons = wsrrutility.getServiceVersionSubTipologyBybsrURI(res, url, user ,password);
 
 										// -------------------------Legami
 										// servizi
@@ -649,7 +649,10 @@ public class Statistics {
 			try {
 				jso = (JSONObject) jsae.getJSONObject(0);
 				bsrUri = (String) jso.get("value");
-				type = wsrrutility.getServiceVersionClassification(bsrUri, url, user, password);
+				//210117 inserito nuovo metodo
+				//type = wsrrutility.getServiceVersionClassification(bsrUri, url, user, password);
+				type =wsrrutility.getServiceVersionSubTipologyBybsrURI(bsrUri, url, user ,password);
+				
 				acronimo = wsrrutility.getOwningOrganizationFromGenericObjectByBsrUri(bsrUri, url, user, password);
 
 				if (acronimo != null) {
@@ -849,8 +852,10 @@ public class Statistics {
 					"gep63_ATTIVATO_IN_APPL");
 			String attsys = WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "gep63_ATTIVATO_IN_SYST");
 			String attprd = WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "gep63_ATTIVATO_IN_PROD");
-
-			String sottotBV = wsrrutility.getServiceVersionClassification(bsrURI, url, user, password);
+			
+			//210117 inserito nuovo metodo
+			//String sottotBV = wsrrutility.getServiceVersionClassification(bsrURI, url, user, password);
+			String sottotBV = wsrrutility.getServiceVersionSubTipologyBybsrURI(bsrURI, url, user ,password);
 
 			String acroBV = wsrrutility.getOwningOrganizationFromGenericObjectByBsrUri(bsrURI, url, user, password);
 

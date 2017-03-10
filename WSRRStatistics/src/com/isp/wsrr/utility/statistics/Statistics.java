@@ -71,8 +71,10 @@ public class Statistics {
 
 		}
 
-		System.out.println("----------------------Totalizzatore V3.2- Gennaio 2017-----------------------------");
+		System.out.println("----------------------Totalizzatore V3.3- Marzo 2017-----------------------------");
 		System.out.println("Utilizzata la nuova funzione per il recupero della sottotipologia: getServiceVersionTipologyBybsrURI");
+		System.out.println("Aggiunto null in caso di valore non presente per runtime,designtime e userdeftime");
+		System.out.println("Aggiunta gestione della versione");
 		System.out.println("----------------------------------------------------------------------------------");
 		JSONArray jsaBusinessApplication = wsrrutility.getAllObjectsSpecifiedByPrimaryType(
 				"http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23BusinessApplication",
@@ -418,6 +420,17 @@ public class Statistics {
 										
 										//13.12.16  in coda aggiungo gpx63_RUNTIME gpx63_DESIGNTIME  gpx63_USERDEFTIME
 										
+										//09032017 se non valorizzati passo null
+										
+										if (runtime==null) runtime="null";
+										if (runtime.length()==0) runtime="null";
+										
+										if (designtime==null) designtime="null";
+										if (designtime.length()==0) designtime="null";
+										
+										if (userdeftime==null) userdeftime="null";
+										if (userdeftime.length()==0) userdeftime="null";
+										
 										recordSB.append(runtime)
 												.append("@#@");
 										
@@ -531,6 +544,17 @@ public class Statistics {
 											}
 											
 											//13.12.16  in coda aggiungo gpx63_RUNTIME gpx63_DESIGNTIME  gpx63_USERDEFTIME
+											
+											//09032017 se non valorizzati passo null
+											
+											if (runtime==null) runtime="null";
+											if (runtime.length()==0) runtime="null";
+											
+											if (designtime==null) designtime="null";
+											if (designtime.length()==0) designtime="null";
+											
+											if (userdeftime==null) userdeftime="null";
+											if (userdeftime.length()==0) userdeftime="null";
 											
 											recordSB.append(runtime)
 											.append("@#@");
@@ -844,19 +868,22 @@ public class Statistics {
 			JSONObject jso = (JSONObject) jsae.getJSONObject(0);
 			String bsrURI = (String) jso.get("value");
 
+			//09032017 aggiungo anche la versione
 			JSONArray jsaedett = wsrrutility.getObjectPropertiesData(bsrURI,
-					"&p1=name&p2=primaryType&p3=description&p4=gep63_ATTIVATO_IN_APPL&p5=gep63_ATTIVATO_IN_SYST&p6=gep63_ATTIVATO_IN_PROD",
+					"&p1=name&p2=primaryType&p3=description&p4=gep63_ATTIVATO_IN_APPL&p5=gep63_ATTIVATO_IN_SYST&p6=gep63_ATTIVATO_IN_PROD&p7=version",
 					url, user, password);
 
 			String attappl = WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0),
 					"gep63_ATTIVATO_IN_APPL");
 			String attsys = WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "gep63_ATTIVATO_IN_SYST");
 			String attprd = WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "gep63_ATTIVATO_IN_PROD");
-			
+			//09032017 estraggo la versione
+			String version= WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) jsaedett.get(0), "version");
 			//210117 inserito nuovo metodo
 			//String sottotBV = wsrrutility.getServiceVersionClassification(bsrURI, url, user, password);
 			String sottotBV = wsrrutility.getServiceVersionSubTipologyBybsrURI(bsrURI, url, user ,password);
-
+            System.out.println("Sotto tipologia BV : " + sottotBV);
+			
 			String acroBV = wsrrutility.getOwningOrganizationFromGenericObjectByBsrUri(bsrURI, url, user, password);
 
 			if (acroBV != null) {
@@ -947,7 +974,9 @@ public class Statistics {
 			recordSB.append(attsys).append("@#@");
 			recordSB.append(attprd).append("@#@");
 
-			jsaedett = wsrrutility.getAssociatedInterfaces(name, "00", url, user, password);
+			//09032017 inserita la versione invece di '00' fisso
+			jsaedett = wsrrutility.getAssociatedInterfaces(name, version, url, user, password);
+			//jsaedett = wsrrutility.getAssociatedInterfaces(name, "00", url, user, password);
 
 			if (jsaedett != null && jsaedett.length()!=0) {
 
@@ -968,9 +997,17 @@ public class Statistics {
 				interf = sb.toString();
 				interf = interf.substring(0, interf.length() - 1);
 				recordSB.append(interf).append("@#@");
+				//09032017 scrivo la versione
+				recordSB.append(version).append("@#@");
 				
 			} else
-				System.out.println("Interfaccia - "+name +" non presente con versione 00");
+				
+			    {
+				//08032017 in attesa di recuperare le versioni come wr al posto dell'interfaccia scrivo: ???
+				System.out.println("Interfaccia - "+name +" non presente con versione "+version);
+				recordSB.append("???").append("@#@");
+			    }
+				
 			
 			//30.08.2016 per ogni censimento dati il bsrURI recupero per ogni ambiente: Application-SystemTest-Produzione la lista della data ultimo
 			//utilizzo mettendo prima il tipo di endpoint 

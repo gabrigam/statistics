@@ -50,7 +50,7 @@ public class WebServiceSecurityBVRelations {
 		JSONArray jsaedett = null;
 		JSONObject jso = null;
 
-		nbplog.info("----------------------LegamiBV per la Sicurezza V1.0 Febbraio 2017 ---------------------------");
+		nbplog.info("----------------------LegamiBV per la Sicurezza V2.0 Marzo 2017 ---------------------------");
 		nbplog.info("");
 		nbplog.info("----------------------------------------------------------------------------------------------");
 

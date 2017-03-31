@@ -71,10 +71,11 @@ public class Statistics {
 
 		}
 
-		System.out.println("----------------------Totalizzatore V3.3- Marzo 2017-----------------------------");
+		System.out.println("----------------------Totalizzatore V3.4- Marzo 2017-----------------------------");
 		System.out.println("Utilizzata la nuova funzione per il recupero della sottotipologia: getServiceVersionTipologyBybsrURI");
 		System.out.println("Aggiunto null in caso di valore non presente per runtime,designtime e userdeftime");
-		System.out.println("Aggiunta gestione della versione");
+		System.out.println("Aggiunta gestione delle versione");
+		System.out.println("Aggiunto wr 31032017 per chiusura record");
 		System.out.println("----------------------------------------------------------------------------------");
 		JSONArray jsaBusinessApplication = wsrrutility.getAllObjectsSpecifiedByPrimaryType(
 				"http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23BusinessApplication",
@@ -1025,7 +1026,15 @@ public class Statistics {
 			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_UFFICIO_MATRICOLA")).append("@#@");
 			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_UFFICIO_NOMINATIVO")).append("@#@");
 			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_SERVIZIO_MATRICOLA")).append("@#@");
-			recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_SERVIZIO_NOMINATIVO"));
+			
+			//wr 31032017
+			String resp_serv_matr=WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_SERVIZIO_NOMINATIVO");
+			
+			if (resp_serv_matr ==null || resp_serv_matr.length()==0) {
+				recordSB.append("null");
+			} else
+				recordSB.append(WSRRUtility.getObjectValueFromJSONArrayData((JSONArray) orgDett.get(0), "ale63_RESP_SERVIZIO_NOMINATIVO"));
+			
 			}
 			else {
 				recordSB.append(" ").append("@#@");
@@ -1033,7 +1042,8 @@ public class Statistics {
 				recordSB.append(" ").append("@#@");
 				recordSB.append(" ").append("@#@");
 				recordSB.append(" ").append("@#@");
-				recordSB.append(" ");
+				//wr 31032017
+				recordSB.append("null");
 			}
 			
 			elenco_servizi.println(recordSB.toString());

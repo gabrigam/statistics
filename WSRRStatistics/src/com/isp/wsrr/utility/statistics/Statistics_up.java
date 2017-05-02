@@ -10,12 +10,12 @@ import org.json.JSONObject;
 
 import com.isp.wsrr.utility.WSRRUtility;
 
-public class Statistics {
+public class Statistics_up {
 
 	public static void main(String[] args) throws Exception {
 
 		WSRRUtility wsrrutility = new WSRRUtility();
-		Statistics statistics = new Statistics();
+		Statistics_up statistics = new Statistics_up();
 
 		String url = args[0];
 		String totalibv = args[1];
@@ -36,7 +36,7 @@ public class Statistics {
 		HashMap<String, String> legamimag2SSAMap = new HashMap<String, String>();
 		HashMap<String, String> legamimag2Map = new HashMap<String, String>();
 		HashMap<String, String> sldMap = new HashMap<String, String>();
-		HashMap acronimoSSAMap = new HashMap<String, String>();
+		HashMap<String, String> acronimoSSAMap = new HashMap<String, String>();
 
 		int consumerNF = 0;
 		int providerNF = 0;
@@ -71,11 +71,12 @@ public class Statistics {
 
 		}
 
-		System.out.println("----------------------Totalizzatore V3.4- Marzo 2017-----------------------------");
+		System.out.println("----------------------Totalizzatore V3.5- Aprile 2017-----------------------------");
 		System.out.println("Utilizzata la nuova funzione per il recupero della sottotipologia: getServiceVersionTipologyBybsrURI");
 		System.out.println("Aggiunto null in caso di valore non presente per runtime,designtime e userdeftime");
 		System.out.println("Aggiunta gestione delle versione");
 		System.out.println("Aggiunto wr 31032017 per chiusura record");
+		System.out.println("Aggiunta Ottimizzazione vedere cosa cambiato rispetto alla classe Statistics");
 		System.out.println("----------------------------------------------------------------------------------");
 		JSONArray jsaBusinessApplication = wsrrutility.getAllObjectsSpecifiedByPrimaryType(
 				"http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23BusinessApplication",
@@ -100,10 +101,10 @@ public class Statistics {
 		System.out.println(new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
 		System.out.println("Calcolo Totale dei servizi in corso......");
 
-		Statistics.updateTotals(wsrrutility, jsaSHOST, totalMap, totalSSAMap, url, user, password);
-		Statistics.updateTotals(wsrrutility, jsaSCHOST, totalMap, totalSSAMap, url, user, password);
-		Statistics.updateTotals(wsrrutility, jsaSOPEN, totalMap, totalSSAMap, url, user, password);
-		Statistics.updateTotals(wsrrutility, jsaSCOPEN, totalMap, totalSSAMap, url, user, password);
+		Statistics_up.updateTotals(wsrrutility, jsaSHOST, totalMap, totalSSAMap,acronimoSSAMap, url, user, password);
+		Statistics_up.updateTotals(wsrrutility, jsaSCHOST, totalMap, totalSSAMap, acronimoSSAMap,url, user, password);
+		Statistics_up.updateTotals(wsrrutility, jsaSOPEN, totalMap, totalSSAMap, acronimoSSAMap,url, user, password);
+		Statistics_up.updateTotals(wsrrutility, jsaSCOPEN, totalMap, totalSSAMap,acronimoSSAMap, url, user, password);
 
 		System.out.println(new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
 		System.out.println("Calcolo Totale dei servizi terminato......");
@@ -114,13 +115,13 @@ public class Statistics {
 		
 		System.out.println("Recupero dei Business Services......");
 		
-		Statistics.serviceList(wsrrutility, "http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SHOSTServiceVersion", elenco_servizi, url, user, password);
+		Statistics_up.serviceList(wsrrutility, jsaSHOST, elenco_servizi,acronimoSSAMap, url, user, password);
 
-		Statistics.serviceList(wsrrutility, "http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SCHOSTServiceVersion", elenco_servizi, url, user, password);
+		Statistics_up.serviceList(wsrrutility,jsaSCHOST , elenco_servizi, acronimoSSAMap,url, user, password);
 		
-		Statistics.serviceList(wsrrutility, "http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SOPENServiceVersion", elenco_servizi, url, user, password);
+		Statistics_up.serviceList(wsrrutility,jsaSOPEN  , elenco_servizi,acronimoSSAMap, url, user, password);
 
-		Statistics.serviceList(wsrrutility, "http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SCOPENServiceVersion", elenco_servizi, url, user, password);
+		Statistics_up.serviceList(wsrrutility,jsaSCOPEN, elenco_servizi, acronimoSSAMap,url, user, password);
 		
 		System.out.println(new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
 		System.out.println("Recupero dei Business Services terminato..");
@@ -605,6 +606,9 @@ public class Statistics {
 			j++;
 		}
 
+		////////////////////////////////////////////////////////////////////////////////////////////7
+		
+		
 		legami_servizi_consumer_provider.flush();
 		legami_servizi_consumer_provider.close();
 		applicazioni_consumer_provider.flush();
@@ -656,7 +660,7 @@ public class Statistics {
 	}
 
 	public static void updateTotals(WSRRUtility wsrrutility, JSONArray data, HashMap<String, String> totalMap,
-			HashMap<Object, String> totalSSAMap, String url, String user, String password) {
+			HashMap<Object, String> totalSSAMap, HashMap<String, String> acronimoSSAMap,String url, String user, String password) {
 
 		int i = data.length();
 		int j = 0;
@@ -667,7 +671,7 @@ public class Statistics {
 		String acronimo = null;
 		String ssa = null;
 		int current = 0;
-		HashMap<String, String> acronimoSSAMap = new HashMap<String, String>();
+		//HashMap<String, String> acronimoSSAMap = new HashMap<String, String>();
 		while (i > j) {
 
 			jsae = (JSONArray) data.getJSONArray(j);
@@ -850,12 +854,12 @@ public class Statistics {
 		
 	}
   
-  static private void serviceList(WSRRUtility wsrrutility,String type,PrintWriter elenco_servizi,String url,String user,String password) {
+  static private void serviceList(WSRRUtility wsrrutility,JSONArray jsa,PrintWriter elenco_servizi,HashMap<String, String> acronimoSSAMap,String url,String user,String password) {
 	  
-		JSONArray jsa = wsrrutility.getAllObjectsSpecifiedByPrimaryType(type,url, user, password);
+		//JSONArray jsa = wsrrutility.getAllObjectsSpecifiedByPrimaryType(type,url, user, password);
 
 		StringBuffer recordSB=new StringBuffer();
-		HashMap acronimoSSAMap = new HashMap<String, String>();
+		//HashMap acronimoSSAMap = new HashMap<String, String>();
 		int i = jsa.length();
 
 		String name = null;
@@ -1015,7 +1019,7 @@ public class Statistics {
 			
 			//es (CICS)10-10-2018|(REST)20-12_2016|
 			
-			recordSB.append(Statistics.lastUsedDate(wsrrutility, bsrURI, url, user, password)).append("@#@");
+			recordSB.append(Statistics_up.lastUsedDate(wsrrutility, bsrURI, url, user, password)).append("@#@");
 			
 			//30.08.2016 in chiusura del record vengono recuperate altre informazioni indipendentemente se da acronimo o SSA in questo caso sono 
 			//le info associate al SSA

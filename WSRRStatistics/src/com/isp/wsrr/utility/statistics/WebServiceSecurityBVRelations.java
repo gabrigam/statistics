@@ -50,8 +50,9 @@ public class WebServiceSecurityBVRelations {
 		JSONArray jsaedett = null;
 		JSONObject jso = null;
 
-		nbplog.info("----------------------LegamiBV per la Sicurezza V2.0 Marzo 2017 ---------------------------");
+		nbplog.info("----------------------LegamiBV per la Sicurezza V2.1 Maggio 2017 ---------------------------");
 		nbplog.info("");
+		nbplog.info("Aggiunta gestione della specializzazione in fase di recupero deli enpoint");
 		nbplog.info("----------------------------------------------------------------------------------------------");
 
 		JSONArray jsa = wsrrutility.getAllObjectsSpecifiedByPrimaryType(
@@ -174,9 +175,11 @@ public class WebServiceSecurityBVRelations {
 
 											record.append(WebServiceSecurityBVRelations.padder(10, abilitFunzCons));
 
+											//"" è la classificazione di default
+											
 											endpoints = wsrrutility
 													.getEndpointNameFromBsrUriCatalogAndEnvironmentCheckSecurity(res,
-															"Application", true, url, user, password);
+															"Application", true,"", url, user, password);
 
 											record.append(WebServiceSecurityBVRelations.padder(1023,
 													WebServiceSecurityBVRelations.normalizefirst4Endpoint(endpoints)));
@@ -236,13 +239,15 @@ public class WebServiceSecurityBVRelations {
 											boolean write=true;
 											String currentEnpointName=" ";
 											
-											SOAPEndpointSec=wsrrutility.getEndpointNameFromBsrUriSLDEnvironmentCheckSecurity(sld, "Application", "SOAP", true,url, user, password);
+											//"" è la classificazione di default
+											
+											SOAPEndpointSec=wsrrutility.getEndpointNameFromBsrUriSLDEnvironmentCheckSecurity(sld, "Application", "SOAP", true,"",url, user, password);
 																						
-											RESTEndpointSec=wsrrutility.getEndpointNameFromBsrUriSLDEnvironmentCheckSecurity(sld, "Application", "REST", true,url, user, password);;
+											RESTEndpointSec=wsrrutility.getEndpointNameFromBsrUriSLDEnvironmentCheckSecurity(sld, "Application", "REST", true,"",url, user, password);;
 												
-											CALLABLEEndpointSec=wsrrutility.getEndpointNameFromBsrUriSLDEnvironmentCheckSecurity(sld, "Application", "CALLABLE", true,url, user, password);
+											CALLABLEEndpointSec=wsrrutility.getEndpointNameFromBsrUriSLDEnvironmentCheckSecurity(sld, "Application", "CALLABLE", true,"",url, user, password);
 																		
-											GENERALEndpoint=wsrrutility.getEndpointNameFromBsrUriSLDEnvironmentCheckSecurity(sld, "Application", "", false,url, user, password);
+											GENERALEndpoint=wsrrutility.getEndpointNameFromBsrUriSLDEnvironmentCheckSecurity(sld, "Application", "", false,"",url, user, password);
 										
 											totalSOAPSec=WebServiceSecurityBVRelations.valorizedEndpoints(SOAPEndpointSec);
 											

@@ -71,7 +71,7 @@ public class Statistics_up {
 
 		}
 
-		System.out.println("----------------------Totalizzatore V3.5- Aprile 2017-----------------------------");
+		System.out.println("----------------------Totalizzatore(small)  V3.6- Febbraio 2018-----------------------------");
 		System.out.println("Utilizzata la nuova funzione per il recupero della sottotipologia: getServiceVersionTipologyBybsrURI");
 		System.out.println("Aggiunto null in caso di valore non presente per runtime,designtime e userdeftime");
 		System.out.println("Aggiunta gestione delle versione");
@@ -86,6 +86,9 @@ public class Statistics_up {
 
 			totalBA = jsaBusinessApplication.length();
 		}
+		
+		/**
+		
 		JSONArray jsaSHOST = wsrrutility.getAllObjectsSpecifiedByPrimaryType(
 				"http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SHOSTServiceVersion",
 				url, user, password);
@@ -98,6 +101,23 @@ public class Statistics_up {
 		JSONArray jsaSCOPEN = wsrrutility.getAllObjectsSpecifiedByPrimaryType(
 				"http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SCOPENServiceVersion",
 				url, user, password);
+		
+		**/
+		/**
+		  SHOSTService - A1999BCX01   bc
+
+          SCHOSTService - A1999BSX01   bs
+
+          SOPENService - A1999IBP01   iibparal
+
+          SCOPENService - A1999SCM01  sciib
+		**/
+		
+		JSONArray jsaSHOST =wsrrutility.getAllObjectsSpecifiedByPrimaryTypeNameandVersion("A1999BCX01", "00", "http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SHOSTServiceVersion", url, user, password);
+		JSONArray jsaSCHOST =wsrrutility.getAllObjectsSpecifiedByPrimaryTypeNameandVersion("A1999BSX01", "00", "http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SCHOSTServiceVersion", url, user, password);
+		JSONArray jsaSOPEN =wsrrutility.getAllObjectsSpecifiedByPrimaryTypeNameandVersion("A1999IBP01", "00", "http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SOPENServiceVersion", url, user, password);
+		JSONArray jsaSCOPEN=wsrrutility.getAllObjectsSpecifiedByPrimaryTypeNameandVersion("A1999SCM01", "00", "http://www.ibm.com/xmlns/prod/serviceregistry/profile/v6r3/GovernanceEnablementModel%23SCOPENServiceVersion", url, user, password);
+		
 		System.out.println(new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
 		System.out.println("Calcolo Totale dei servizi in corso......");
 
